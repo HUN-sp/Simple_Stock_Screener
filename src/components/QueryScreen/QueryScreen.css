@@ -1,0 +1,151 @@
+/* src/components/QueryScreen.css */
+
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9fafb;
+    margin: 0;
+    padding: 0;
+}
+
+/* Query Screen main container */
+.query-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 80px; /* Adjust based on navbar height */
+}
+
+/* Container for the query section */
+.query-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 16px;
+}
+
+/* Query form styling */
+.query-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.query-input {
+    width: 100%;
+    height: 100px;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    resize: none;
+    font-size: 1rem;
+    color: #333333;
+}
+
+.query-options {
+    font-size: 0.9rem;
+    color: #555555;
+}
+
+.run-query-button {
+    background-color: #6366f1;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.run-query-button:hover {
+    background-color: #4f46e5;
+}
+
+/* Custom query example styling */
+.custom-query-example {
+    background-color: #f1f5f9;
+    border-radius: 6px;
+    padding: 16px;
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #374151;
+    text-align: left;
+}
+
+.custom-query-example h3 {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.custom-query-example p {
+    margin: 4px 0;
+}
+
+.custom-query-example a {
+    display: inline-block;
+    margin-top: 8px;
+    color: #6366f1;
+    text-decoration: underline;
+}
+
+.custom-query-example a:hover {
+    color: #4f46e5;
+}
+
+/* Button to show all ratios */
+.show-all-ratios-button {
+    background-color: #e0e7ff;
+    color: #4f46e5;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-top: 16px;
+}
+
+.show-all-ratios-button:hover {
+    background-color: #c7d2fe;
+}
+
+/* Go Back link styling */
+.go-back-link {
+    display: inline-block;
+    margin-top: 16px;
+    color: #6366f1;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.go-back-link:hover {
+    color: #4f46e5;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .query-container {
+        padding: 16px;
+    }
+
+    .query-input {
+        height: 80px;
+    }
+
+    .run-query-button, .show-all-ratios-button {
+        padding: 10px 16px;
+    }
+}
