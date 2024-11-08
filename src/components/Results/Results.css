@@ -1,67 +1,121 @@
-/* Results.css */
+.results-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 60px); /* Adjust based on navbar height */
+  margin-top: 60px; /* Match navbar height */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
 
-/* Container for the results */
 .results-container {
-    display: grid;
-    gap: 1rem;
-    padding: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    background-color: #f8f9fa;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  overflow-x: auto; /* Enable horizontal scroll for table if needed */
+}
+
+.results-screen h2 {
+  font-size: clamp(1.2rem, 4vw, 2rem); /* Responsive font size */
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Table Styles */
+.results-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.results-table {
+  width: 100%;
+  min-width: 600px; /* Minimum width to prevent squishing */
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.results-table th {
+  background-color: #6366f1;
+  color: white;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 500;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.results-table td {
+  padding: 0.75rem 1rem;
+  font-size: clamp(0.875rem, 2vw, 0.95rem);
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px; /* Maximum width for cells */
+}
+
+.results-table tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Empty State */
+.no-results-message {
+  text-align: center;
+  padding: 2rem;
+  color: #6b7280;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+/* Loading State */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+/* Mobile Optimizations */
+@media screen and (max-width: 768px) {
+  .results-screen {
+      padding: 0.5rem;
+      margin-top: 56px; /* Adjust based on mobile navbar height */
   }
-  
-  /* Style each result card */
-  .result-card {
-    background-color: #ffffff;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+
+  .results-container {
+      padding: 0.5rem;
   }
-  
-  /* Add a hover effect */
-  .result-card:hover {
-    transform: translateY(-5px);
+
+  .results-table-wrapper {
+      margin: 0.5rem 0;
+      border-radius: 4px;
   }
-  
-  /* Card title */
-  .result-card h3 {
-    margin: 0;
-    font-size: 1.25rem;
-    color: #333;
+
+  .results-table td {
+      padding: 0.625rem 0.75rem;
   }
-  
-  /* Card description */
-  .result-card p {
-    margin: 0.5rem 0;
-    color: #555;
-    font-size: 1rem;
+
+  /* Optional: Add horizontal scroll indicator */
+  .results-table-wrapper::after {
+      content: '← Scroll →';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      color: #6b7280;
+      opacity: 0.8;
   }
-  
-  /* Link styling */
-  .result-card a {
-    display: inline-block;
-    margin-top: 0.5rem;
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .result-card a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Responsive adjustments for smaller screens */
-  @media (max-width: 768px) {
-    .results-container {
-      grid-template-columns: 1fr;
-    }
-  
-    .result-card h3 {
-      font-size: 1.1rem;
-    }
-  
-    .result-card p {
-      font-size: 0.9rem;
-    }
-  }
-  
+}
