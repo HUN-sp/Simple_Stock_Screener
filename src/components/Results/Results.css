@@ -1,121 +1,87 @@
+/* Results.css */
+
+/* Main container for the results screen */
 .results-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem;
   background-color: #f8f9fa;
-  min-height: calc(100vh - 60px); /* Adjust based on navbar height */
-  margin-top: 60px; /* Match navbar height */
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  min-height: 100vh;
 }
 
-.results-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-  overflow-x: auto; /* Enable horizontal scroll for table if needed */
-}
-
+/* Title styling */
 .results-screen h2 {
-  font-size: clamp(1.2rem, 4vw, 2rem); /* Responsive font size */
+  font-size: 2rem;
   font-weight: 600;
   color: #333;
-  margin-bottom: 1rem;
-  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-/* Table Styles */
-.results-table-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin: 1rem 0;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* Message styling for empty results */
+.results-screen p {
+  font-size: 1.1rem;
+  color: #666;
 }
 
+/* Table container */
 .results-table {
   width: 100%;
-  min-width: 600px; /* Minimum width to prevent squishing */
-  border-collapse: separate;
-  border-spacing: 0;
+  max-width: 800px;
+  border-collapse: collapse;
+  overflow-x: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #ffffff;
 }
 
+/* Table headers */
 .results-table th {
   background-color: #6366f1;
-  color: white;
-  padding: 0.75rem 1rem;
+  color: #ffffff;
+  padding: 1rem;
   text-align: left;
-  font-weight: 500;
-  font-size: clamp(0.875rem, 2vw, 1rem);
-  white-space: nowrap;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: 2px solid #e2e8f0;
 }
 
+/* Table rows */
 .results-table td {
-  padding: 0.75rem 1rem;
-  font-size: clamp(0.875rem, 2vw, 0.95rem);
-  color: #374151;
-  border-bottom: 1px solid #e5e7eb;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 200px; /* Maximum width for cells */
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #333333;
+  border-bottom: 1px solid #e2e8f0;
 }
 
+/* Add hover effect for table rows */
 .results-table tr:hover {
-  background-color: #f9fafb;
+  background-color: #f1f5f9;
+  cursor: pointer;
 }
 
-/* Empty State */
+/* Style for empty results message */
 .no-results-message {
+  font-size: 1.1rem;
+  color: #666;
   text-align: center;
-  padding: 2rem;
-  color: #6b7280;
-  font-size: clamp(0.875rem, 2vw, 1rem);
+  margin-top: 1.5rem;
 }
 
-/* Loading State */
-.loading-spinner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 200px;
-}
-
-/* Mobile Optimizations */
-@media screen and (max-width: 768px) {
-  .results-screen {
-      padding: 0.5rem;
-      margin-top: 56px; /* Adjust based on mobile navbar height */
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .results-screen h2 {
+      font-size: 1.5rem;
   }
-
-  .results-container {
-      padding: 0.5rem;
+  
+  .results-table th, .results-table td {
+      padding: 0.75rem;
+      font-size: 0.9rem;
   }
-
-  .results-table-wrapper {
-      margin: 0.5rem 0;
-      border-radius: 4px;
-  }
-
-  .results-table td {
-      padding: 0.625rem 0.75rem;
-  }
-
-  /* Optional: Add horizontal scroll indicator */
-  .results-table-wrapper::after {
-      content: '← Scroll →';
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.75rem;
-      color: #6b7280;
-      opacity: 0.8;
+  
+  /* Adjust table to stack on smaller screens */
+  .results-table {
+      display: block;
+      overflow-x: auto;
   }
 }

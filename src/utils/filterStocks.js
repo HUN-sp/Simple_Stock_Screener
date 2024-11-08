@@ -1,29 +1,52 @@
 // Import the stock data
 import stockData from '../data/stockData';
 
-// src/utils/filterStocks.js
+// Define stockMetrics to map filter parameters to stock data keys
+const stockMetrics = {
+    marketCap: "Market Capitalization (B)",
+    peRatio: "P/E Ratio",
+    roe: "ROE (%)",
+    debtToEquity: "Debt-to-Equity Ratio",
+    dividendYield: "Dividend Yield (%)",
+    revenueGrowth: "Revenue Growth (%)",
+    epsGrowth: "EPS Growth (%)",
+    currentRatio: "Current Ratio",
+    grossMargin: "Gross Margin (%)"
+};
 
-export const filterStocks = (query) => {
+// Define filterStocks function
+export const filterStocks = (filters) => {
     return stockData.filter((stock) => {
-        const { marketCap, peRatio, roe } = query;
-        
-        let isMatch = true;
+        return filters.every((filter) => {
+            const { parameter, operator, value } = filter;
+            const stockMetricKey = stockMetrics[parameter];
+            const stockValue = stock[stockMetricKey];
 
-        // Check if market capitalization meets criteria
-        if (marketCap && stock["Market Capitalization (B)"] <= marketCap) {
-            isMatch = false;
-        }
+            // Debugging information
+            console.log(`Filter Parameter: ${parameter}, Operator: ${operator}, Filter Value: ${value}, Stock Value: ${stockValue}`);
 
-        // Check if price-to-earnings ratio meets criteria
-        if (peRatio && stock["P/E Ratio"] >= peRatio) {
-            isMatch = false;
-        }
+            if (stockValue === undefined) {
+                console.warn(`Warning: Stock data does not contain metric for ${parameter}`);
+                return false;
+            }
 
-        // Check if return on equity meets criteria
-        if (roe && stock["ROE (%)"] <= roe) {
-            isMatch = false;
-        }
+            if (typeof stockValue !== typeof value) {
+                console.warn(`Type mismatch for ${parameter}. Stock value: ${typeof stockValue}, Filter value: ${typeof value}`);
+                return false;
+            }
 
-        return isMatch;
+            // Apply filter based on the operator
+            switch (operator) {
+                case '>':
+                    return stockValue > value;
+                case '<':
+                    return stockValue < value;
+                case '=':
+                    return stockValue === value;
+                default:
+                    console.warn(`Unsupported operator: ${operator}`);
+                    return true;
+            }
+        });
     });
 };
