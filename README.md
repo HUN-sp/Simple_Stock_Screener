@@ -1,4 +1,4 @@
-# Project Name
+# Stock Screener
 
 ## Getting Started
 
